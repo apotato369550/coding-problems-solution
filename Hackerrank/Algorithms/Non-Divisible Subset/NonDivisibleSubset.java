@@ -22,21 +22,20 @@ class Result {
      */
 
     public static int nonDivisibleSubset(int k, List<Integer> s) {
-        List<List<Integer>> list = new ArrayList<List<Integer>>();
-        for(int i = 0; i < s.size(); i++){
-            for(int j = i + 1; j < s.size(); j++){
-                if(s.get(i) + s.get(j) % k != 0){
-                    List<Integer> pair = new ArrayList<Integer>();
-                    pair.add(s.get(i));
-                    pair.add(s.get(j));
-                    list.add(pair);
-                }
+        HashMap<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
+        
+        for(int item : s){
+            int remainder = item % k;
+            if(!map.containsKey(remainder)){
+                map.put(remainder, new ArrayList<Integer>());
             }
+            map.get(remainder).add(item);
         }
         
-        for(List<Integer> pair : list){
-            System.out.println(pair);
+        for(Map.Entry element : map.entrySet()){
+            System.out.println(element.getKey() + " " + element.getValue());
         }
+        
         return 0;
     }
 
