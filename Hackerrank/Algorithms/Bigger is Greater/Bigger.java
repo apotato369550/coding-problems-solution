@@ -18,12 +18,45 @@ class Result {
      * The function is expected to return a STRING.
      * The function accepts STRING w as parameter.
      */
+    public static List<String> list = new ArrayList<String>();
+    
+    public static String swap(String string, int i, int j){
+        char temp;
+        char[] charArray = string.toCharArray();
+        temp = charArray[i];
+        charArray[i] = charArray[j];
+        charArray[j] = temp;
+        return String.valueOf(charArray);
+    }
+    
+    public static void permutate(String string, int left, int right){
+        if(left == right){
+            list.add(string);
+        } else {
+            for(int i = left; i <= right; i++){
+                string = swap(string, left, i);
+                permutate(string, left + 1, right);
+                string = swap(string, left, i);
+            }
+        }
+        
+    }
 
     public static String biggerIsGreater(String w) {
+        if(w.length() <= 2){
+            StringBuilder reverse = new StringBuilder(w).reverse();
+            if(w.compareTo(reverse.toString()) <= 0){
+                return reverse.toString();
+            } else {
+                return "no answer";
+            }
+        }
+        
+        permutate(w, 0, w.length() - 1);
+        // ican't fucking believe i lost my solution.
         // bruh
-        // i lost my solution i was working on...
-        // ohhhh
-        // but i learned something new
+        // copy geeksforgeeks solution first
+        return "lmao";
     }
 
 }
