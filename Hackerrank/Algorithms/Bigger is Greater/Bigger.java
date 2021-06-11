@@ -51,12 +51,19 @@ class Result {
                 return "no answer";
             }
         }
-        
         permutate(w, 0, w.length() - 1);
+        Collections.sort(list);
+        for(int i = 0; i < list.size(); i++){
+            String current = list.get(i);
+            if(current.compareTo(w) > 0){
+                return current;
+            }
+            // refine this answer;
+        }
         // ican't fucking believe i lost my solution.
         // bruh
         // copy geeksforgeeks solution first
-        return "lmao";
+        return "no answer";
     }
 
 }
