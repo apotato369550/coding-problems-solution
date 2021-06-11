@@ -21,6 +21,7 @@ class Result {
     public static List<String> list = new ArrayList<String>();
     
     public static String swap(String string, int i, int j){
+        // for some reason this algorithm adds letter???
         char temp;
         char[] charArray = string.toCharArray();
         temp = charArray[i];
@@ -45,7 +46,7 @@ class Result {
     public static String biggerIsGreater(String w) {
         if(w.length() <= 2){
             StringBuilder reverse = new StringBuilder(w).reverse();
-            if(w.compareTo(reverse.toString()) <= 0){
+            if(w.compareTo(reverse.toString()) < 0){
                 return reverse.toString();
             } else {
                 return "no answer";
@@ -56,13 +57,17 @@ class Result {
         for(int i = 0; i < list.size(); i++){
             String current = list.get(i);
             if(current.compareTo(w) > 0){
+                list.clear();
                 return current;
             }
             // refine this answer;
         }
+        list.clear();
         // ican't fucking believe i lost my solution.
         // bruh
         // copy geeksforgeeks solution first
+        // consult hackerrank discussions for a valid pseudocode answer
+        // do this
         return "no answer";
     }
 
