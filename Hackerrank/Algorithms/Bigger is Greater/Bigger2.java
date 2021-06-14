@@ -20,8 +20,35 @@ class Result {
      */
 
     public static String biggerIsGreater(String w) {
-    // Write your code here
-
+    // traverse through the string in reverse order
+    // if w[i] < w[i + 1] then split w into two substrings
+    // take the substring on the right and find the smallest character lexicographically
+    // swap that character with w[i]
+    // sort the second substring lexicographically increasing
+        if(w.length() <= 2){
+            StringBuilder reverse = new StringBuilder(w).reverse();
+            if(w.compareTo(reverse.toString()) < 0){
+                return reverse.toString();
+            } else {
+                return "no answer";
+            }
+        }
+        
+        int split = 0;
+        
+        for(int i = w.length() - 2; i > 0; i--){
+            char current = w.charAt(i);
+            char previous = w.charAt(i + 1);
+            if(current.compareTo(previous) < 0){
+                split = i;
+                break;
+            }
+        }
+        
+        String left = w.substring(0, i + 1);
+        String right = w.substring(i);
+        
+        // continue work here
     }
 
 }
