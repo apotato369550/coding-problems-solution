@@ -27,11 +27,39 @@ class Result {
         int maxLex1 = 0;
         int maxLex2 = 0;
         // this is a weird thing???
-        for(int j = 1; j < word.length(); j++){
-            if(word.charAt(j) > word.charAt(j - 1)){
-                maxLex1 = (j > maxLex1) ? j : maxLex1;
+        for(int i = 1; i < w.length(); i++){
+            if(w.charAt(i) > w.charAt(i - 1)){
+                maxLex1 = (i > maxLex1) ? i : maxLex1;
             }
         }
+        
+        if(maxLex1 == 0){
+            return "no answer";
+        }
+        
+        for(int i = maxLex1; i < w.length(); i++){
+            if(w.charAt(i) > w.charAt(maxLex1 - 1)){
+                maxLex2 = i;
+            }
+        }
+        // work on this
+        
+        StringBuilder word = new StringBuilder(w);
+        char temp = word.charAt(maxLex1 - 1);
+        word.setCharAt(maxLex1 - 1, word.charAt(maxLex2));
+        word.setCharAt(maxLex2, temp);
+        
+        int left = maxLex1;
+        int right = word.length() - 1;
+        while(left < right){
+            temp = word.charAt(left);
+            word.setCharAt(left, word.charAt(right));
+            word.setCharAt(right, temp);
+            left++;
+            right--;
+        }
+        
+        return word.toString();
     }
 }
 
