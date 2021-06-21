@@ -22,7 +22,14 @@ class Result {
 
     public static void kaprekarNumbers(int p, int q) {
     // Write your code here
-
+        // this looks pretty easy
+        String kaprekar = "";
+        
+        if(kaprekar == ""){
+            System.out.println("Invalid Range");
+        } else {
+            System.out.println(kaprekar);
+        }
     }
 
 }
