@@ -21,10 +21,10 @@ class Result {
      */
 
     public static void kaprekarNumbers(int p, int q) {
-    // Write your code here
+        // Write your code here
         // this looks pretty easy
         String kaprekar = "";
-        
+
         for(int i = p; i <= q; i++){
             // figure this out
             // search how to add up the digits of a number in java
@@ -37,11 +37,11 @@ class Result {
             int temp = 0;
             // you don't add the sum, you split it evenly with the first int being smaller if the thing is odd, then u add it
             // fix this tmr
-            
+
             if(squared == ""){
                 continue;
             }
-            
+
             if(squared.length() > 1){
                 int mid = squared.length() / 2;
                 int left = Integer.parseInt(squared.substring(0, mid));
@@ -50,15 +50,15 @@ class Result {
             } else {
                 sum = Integer.parseInt(squared);
             }
-            
-            
+
+
             if(sum == i){
                 kaprekar += i + " ";
             }
         }
-        
+
         // 2 out of 7 test cases failed. Why?
-        
+
         if(kaprekar == ""){
             System.out.println("Invalid Range");
         } else {
@@ -66,18 +66,4 @@ class Result {
         }
     }
 
-}
-
-public class Solution {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
-        int p = Integer.parseInt(bufferedReader.readLine().trim());
-
-        int q = Integer.parseInt(bufferedReader.readLine().trim());
-
-        Result.kaprekarNumbers(p, q);
-
-        bufferedReader.close();
-    }
 }
