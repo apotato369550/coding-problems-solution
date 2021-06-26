@@ -19,10 +19,35 @@ class Result {
      *  1. INTEGER p
      *  2. INTEGER q
      */
+     
+    private static boolean isKaprekar(int num){
+        long squared = (long) num * num;
+        String str = String.valueOf(squared);
+        String left = str.substring(0, str.length() / 2);
+        String right = str.substring(str.length() / 2);
+        
+        int numberLeft = (left.isEmpty()) ? 0 : Integer.parseInt(left);
+        int numberRight = (right.isEmpty()) ? 0 : Integer.parseInt(right);
+        
+        if(numberLeft + numberRight == num){
+            System.out.print(num + " ");
+            return true;
+        } else {
+            return false;
+        }
+        // work on this
+    }
 
     public static void kaprekarNumbers(int p, int q) {
-    // Write your code here
-
+        boolean kaprekar = false;
+        for(int i = p; i <= q; i++){
+            if(isKaprekar(i)){
+                kaprekar = true;
+            }
+        }
+        if(!kaprekar){
+            System.out.print("INVALID RANGE");
+        }
     }
 
 }
