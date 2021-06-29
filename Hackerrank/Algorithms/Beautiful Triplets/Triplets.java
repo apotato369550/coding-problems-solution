@@ -1,94 +1,57 @@
-#include <bits/stdc++.h>
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
 
-using namespace std;
+class Result {
 
-string ltrim(const string &);
-string rtrim(const string &);
-vector<string> split(const string &);
+    /*
+     * Complete the 'beautifulTriplets' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER d
+     *  2. INTEGER_ARRAY arr
+     */
 
-/*
- * Complete the 'beautifulTriplets' function below.
- *
- * The function is expected to return an INTEGER.
- * The function accepts following parameters:
- *  1. INTEGER d
- *  2. INTEGER_ARRAY arr
- */
-
-int beautifulTriplets(int d, vector<int> arr) {
-
-}
-
-int main()
-{
-    ofstream fout(getenv("OUTPUT_PATH"));
-
-    string first_multiple_input_temp;
-    getline(cin, first_multiple_input_temp);
-
-    vector<string> first_multiple_input = split(rtrim(first_multiple_input_temp));
-
-    int n = stoi(first_multiple_input[0]);
-
-    int d = stoi(first_multiple_input[1]);
-
-    string arr_temp_temp;
-    getline(cin, arr_temp_temp);
-
-    vector<string> arr_temp = split(rtrim(arr_temp_temp));
-
-    vector<int> arr(n);
-
-    for (int i = 0; i < n; i++) {
-        int arr_item = stoi(arr_temp[i]);
-
-        arr[i] = arr_item;
+    public static int beautifulTriplets(int d, List<Integer> arr) {
+    // Write your code here
+        for(int i = 0; i < arr.size(); i++){
+            // continue here
+        }
     }
 
-    int result = beautifulTriplets(d, arr);
-
-    fout << result << "\n";
-
-    fout.close();
-
-    return 0;
 }
 
-string ltrim(const string &str) {
-    string s(str);
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-    s.erase(
-        s.begin(),
-        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
-    );
+        String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
 
-    return s;
-}
+        int n = Integer.parseInt(firstMultipleInput[0]);
 
-string rtrim(const string &str) {
-    string s(str);
+        int d = Integer.parseInt(firstMultipleInput[1]);
 
-    s.erase(
-        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
-        s.end()
-    );
+        String[] arrTemp = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
 
-    return s;
-}
+        List<Integer> arr = new ArrayList<>();
 
-vector<string> split(const string &str) {
-    vector<string> tokens;
+        for (int i = 0; i < n; i++) {
+            int arrItem = Integer.parseInt(arrTemp[i]);
+            arr.add(arrItem);
+        }
 
-    string::size_type start = 0;
-    string::size_type end = 0;
+        int result = Result.beautifulTriplets(d, arr);
 
-    while ((end = str.find(" ", start)) != string::npos) {
-        tokens.push_back(str.substr(start, end - start));
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
 
-        start = end + 1;
+        bufferedReader.close();
+        bufferedWriter.close();
     }
-
-    tokens.push_back(str.substr(start));
-
-    return tokens;
 }
