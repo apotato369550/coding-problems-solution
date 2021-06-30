@@ -23,31 +23,36 @@ class Result {
         // get 3 digit combinations of all numbers here...
         List<List<Integer>> permutations = new ArrayList<>();
         int beautiful = 0;
+        // time limit exceeded...
+        // find a way to optimize
         for(int i = 0; i < arr.size(); i++){
             for(int j = 0; j < arr.size(); j++){
-                if(j == i){
+                if(j == i || i > j){
                     continue;
                 }
                 for(int k = 0; k < arr.size(); k++){
-                    if(j == k){
+                    if(j == k || j > k){
                         continue;
+                    }
+                    int n = arr.get(j) - arr.get(i);
+                    int m = arr.get(k) - arr.get(j);
+                    
+                    if(n == d && m == d){
+                        beautiful++;
                     }
                     // get rid of list
                     // calculate beauty immediately
+                    /*
                     List<Integer> permutation = new ArrayList<Integer>();
                     permutation.add(arr.get(i));
                     permutation.add(arr.get(j));
                     permutation.add(arr.get(k));
                     
                     permutations.add(permutation);
+                    */
                 }
             }
         }
-        
-        for(List<Integer> permutation : permutations){
-            System.out.println(permutation);
-        }
-        
         return beautiful;
     }
 
