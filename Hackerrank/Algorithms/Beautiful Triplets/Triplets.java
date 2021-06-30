@@ -19,9 +19,36 @@ class Result {
 
     public static int beautifulTriplets(int d, List<Integer> arr) {
     // Write your code here
+        // look through all notes
+        // get 3 digit combinations of all numbers here...
+        List<List<Integer>> permutations = new ArrayList<>();
+        int beautiful = 0;
         for(int i = 0; i < arr.size(); i++){
-            // continue here
+            for(int j = 0; j < arr.size(); j++){
+                if(j == i){
+                    continue;
+                }
+                for(int k = 0; k < arr.size(); k++){
+                    if(j == k){
+                        continue;
+                    }
+                    // get rid of list
+                    // calculate beauty immediately
+                    List<Integer> permutation = new ArrayList<Integer>();
+                    permutation.add(arr.get(i));
+                    permutation.add(arr.get(j));
+                    permutation.add(arr.get(k));
+                    
+                    permutations.add(permutation);
+                }
+            }
         }
+        
+        for(List<Integer> permutation : permutations){
+            System.out.println(permutation);
+        }
+        
+        return beautiful;
     }
 
 }
