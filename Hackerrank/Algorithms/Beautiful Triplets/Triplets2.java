@@ -19,27 +19,7 @@ class Result {
 
     public static int beautifulTriplets(int d, List<Integer> arr) {
     // Write your code here
-        // look through all notes
-        // get 3 digit combinations of all numbers here...
-        List<List<Integer>> permutations = new ArrayList<>();
-        int beautiful = 0;
-        // time limit exceeded...
-        // find a way to optimize
 
-        // n^3 reduce it to n^2 somehow
-        for(int i = 0; i < arr.size(); i++){
-            for(int j = i + 1; j < arr.size(); j++){
-                for(int k = j + 1; k < arr.size(); k++){
-                    int n = arr.get(j) - arr.get(i);
-                    int m = arr.get(k) - arr.get(j);
-                    
-                    if(n == d && m == d){
-                        beautiful++;
-                    }
-                }
-            }
-        }
-        return beautiful;
     }
 
 }
