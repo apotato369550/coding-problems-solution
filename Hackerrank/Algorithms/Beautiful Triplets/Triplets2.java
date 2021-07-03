@@ -19,7 +19,14 @@ class Result {
 
     public static int beautifulTriplets(int d, List<Integer> arr) {
     // Write your code here
-
+        int triplets = 0;
+        Collections.sort(arr);
+        for(int a : arr){
+            if(Collections.binarySearch(arr, d + a) >= 0 && Collections.binarySearch(arr, a + d * 2) >= 0){
+                triplets++;
+            }
+        }
+        return triplets;
     }
 
 }
