@@ -17,10 +17,20 @@ class Result {
      *  2. 2D_INTEGER_ARRAY cases
      */
 
-    public static List<Integer> serviceLane(int n, List<List<Integer>> cases) {
-    // Write your code here
-        // this is pretty simple.
-        // this should do the trick
+    public static List<Integer> serviceLane(List<Integer> widths, List<List<Integer>> cases) {
+        List<Integer> width = new ArrayList<>();
+        for(List<Integer> list : cases){
+            int lowest = Integer.MAX_VALUE;
+            
+            for(int i = list.get(0); i <= list.get(1); i++){
+                if(list.get(i) < lowest){
+                    lowest = list.get(i);
+                }
+            }
+            width.add(lowest);
+        }
+        
+        return width;
     }
 
 }
@@ -60,7 +70,7 @@ public class Solution {
             cases.add(casesRowItems);
         }
 
-        List<Integer> result = Result.serviceLane(n, cases);
+        List<Integer> result = Result.serviceLane(width, cases);
 
         for (int i = 0; i < result.size(); i++) {
             bufferedWriter.write(String.valueOf(result.get(i)));
