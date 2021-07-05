@@ -21,15 +21,15 @@ class Result {
         List<Integer> width = new ArrayList<>();
         for(List<Integer> list : cases){
             int lowest = Integer.MAX_VALUE;
-            
+    
             for(int i = list.get(0); i <= list.get(1); i++){
-                if(list.get(i) < lowest){
-                    lowest = list.get(i);
+                if(widths.get(i) < lowest){
+                    lowest = widths.get(i);
                 }
             }
             width.add(lowest);
         }
-        
+        // make notes for this
         return width;
     }
 
