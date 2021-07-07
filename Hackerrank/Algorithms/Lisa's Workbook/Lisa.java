@@ -20,7 +20,16 @@ class Result {
 
     public static int workbook(int n, int k, List<Integer> arr) {
     // Write your code here
-        // work on this
+        // 6/11 test cases failed
+        int special = 0;
+        for(int i = 0; i < arr.size(); i++){
+            int page = i + 1;
+            int problems = arr.get(i);
+            if(problems >= page){
+                special++;
+            }
+        }
+        return special;
     }
 
 }
