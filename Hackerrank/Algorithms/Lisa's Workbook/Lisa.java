@@ -19,8 +19,47 @@ class Result {
      */
 
     public static int workbook(int n, int k, List<Integer> arr) {
-    // Write your code here
-        // 6/11 test cases failed
+        // Write your code here
+        // this is harder than i thought
+        // separate loop for page and chapters?
+        // a single chapter can span multiple pages
+        // total pages = sum or all elements in arr / k
+        // pages in a chapter = arr[i] / k rounded up
+        
+        // create the book, then scan through the book
+        
+        List<List<Integer>> book = new ArrayList<>();
+        int totalPages = 0;
+        for(int chapter : arr){
+            totalPages += chapter;
+        }
+        
+        int chapter = 0;
+        int lastQuestion = 1;
+        // polish this
+        for(int i = 0; i < totalPages; i++){
+            List<Integer> page = new ArrayList<>();
+            for(int j = lastQuestion; j <= arr.get(chapter); j++){
+                if(j >= k){
+                    lastQuestion = j;
+                    break;
+                }
+                page.add(j);
+            }
+            if(lastQuestion >= arr.get(chapter)){
+                chapter++;
+            }
+            book.add(page);
+        }
+        
+        for(int i = 0; i < book.size(); i++){
+            System.out.println("Page number " + (i + 1));
+            for(int j = 0; j < book.get(i).size(); j++){
+                System.out.println(book.get(i).get(j));
+            }
+        }
+        
+        /*
         int special = 0;
         for(int i = 0; i < arr.size(); i++){
             int page = i + 1;
@@ -29,7 +68,10 @@ class Result {
                 special++;
             }
         }
+        System.out.println("Special: " + special);
         return special;
+        */
+        return 0;
     }
 
 }
