@@ -27,13 +27,41 @@ class Result {
         // pages in a chapter = arr[i] / k rounded up
         
         // create the book, then scan through the book
+        // there are a lot of excess pages
         
         List<List<Integer>> book = new ArrayList<>();
         int totalPages = 0;
         for(int chapter : arr){
             totalPages += chapter;
         }
+        // total pages needs to be worked on
+        totalPages = (int) Math.ceil((float) totalPages / k);
         
+        for(int i = 0; i < totalPages; i++){
+            List<Integer> page = new ArrayList<Integer>();
+            book.add(page);
+        }
+        int currentPage = 0;
+        for(int i = 0; i < arr.size(); i++){
+            int pages = (int) Math.ceil((float) arr.get(i) / k);
+            for(int j = 0; j < arr.get(i); j++){
+                int question = j + 1;
+                if(book.get(currentPage).size() > k){
+                    currentPage++;
+                }
+                book.get(currentPage).add(question);
+            }
+            currentPage++;
+        }
+        
+        for(int i = 0; i < book.size(); i++){
+            System.out.println("Page " + (i + 1) + ": ");
+            for(int question : book.get(i)){
+                System.out.println(question);
+            }
+        }
+        
+        /*
         int chapter = 0;
         int lastQuestion = 1;
         // polish this
@@ -58,18 +86,6 @@ class Result {
                 System.out.println(book.get(i).get(j));
             }
         }
-        
-        /*
-        int special = 0;
-        for(int i = 0; i < arr.size(); i++){
-            int page = i + 1;
-            int problems = arr.get(i);
-            if(problems >= page){
-                special++;
-            }
-        }
-        System.out.println("Special: " + special);
-        return special;
         */
         return 0;
     }
