@@ -29,64 +29,26 @@ class Result {
         // create the book, then scan through the book
         // there are a lot of excess pages
         
-        List<List<Integer>> book = new ArrayList<>();
-        int totalPages = 0;
-        for(int chapter : arr){
-            totalPages += chapter;
-        }
-        // total pages needs to be worked on
-        totalPages = (int) Math.ceil((float) totalPages / k);
+        // you can't create the book fully
+        // you must construct the book chapter by chapter
         
-        for(int i = 0; i < totalPages; i++){
-            List<Integer> page = new ArrayList<Integer>();
-            book.add(page);
-        }
-        int currentPage = 0;
+        // SUBLISTS!!
+        // nope. sublists do not work...
+        // i should try an arithmetic solution
+        
+        // how to get current page: get question number + number of questions previously rounded up / k
+        
+        int previous = 0;
+        
         for(int i = 0; i < arr.size(); i++){
-            int pages = (int) Math.ceil((float) arr.get(i) / k);
-            for(int j = 0; j < arr.get(i); j++){
-                int question = j + 1;
-                if(book.get(currentPage).size() > k){
-                    currentPage++;
-                }
-                book.get(currentPage).add(question);
+            for(int j = 1; j <= arr.get(i); j++){
+                int current = (int) Math.ceil((int) Math.ceil((float) j / k) + Math.ceil((float) previous / k));
+                System.out.println("Chapter " + (i + 1) + " Question: " + j + ": ");
+                System.out.println("Current Page: " + current );
             }
-            currentPage++;
+            previous += arr.get(i);
         }
         
-        for(int i = 0; i < book.size(); i++){
-            System.out.println("Page " + (i + 1) + ": ");
-            for(int question : book.get(i)){
-                System.out.println(question);
-            }
-        }
-        
-        /*
-        int chapter = 0;
-        int lastQuestion = 1;
-        // polish this
-        for(int i = 0; i < totalPages; i++){
-            List<Integer> page = new ArrayList<>();
-            for(int j = lastQuestion; j <= arr.get(chapter); j++){
-                if(j >= k){
-                    lastQuestion = j;
-                    break;
-                }
-                page.add(j);
-            }
-            if(lastQuestion >= arr.get(chapter)){
-                chapter++;
-            }
-            book.add(page);
-        }
-        
-        for(int i = 0; i < book.size(); i++){
-            System.out.println("Page number " + (i + 1));
-            for(int j = 0; j < book.get(i).size(); j++){
-                System.out.println(book.get(i).get(j));
-            }
-        }
-        */
         return 0;
     }
 
