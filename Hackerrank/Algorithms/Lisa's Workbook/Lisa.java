@@ -39,19 +39,22 @@ class Result {
         // how to get current page: get question number + number of questions previously rounded up / k
         
         // WE MADE THE BOOK!!!!
+        int special = 0;
         int previous = 0;
         
         for(int i = 0; i < arr.size(); i++){
             for(int j = 1; j <= arr.get(i); j++){
                 int current = (int) Math.ceil((int) Math.ceil((float) j / k) + Math.ceil((float) previous / k));
-                System.out.println("Chapter " + (i + 1) + " Question: " + j + ": ");
-                System.out.println("Current Page: " + current);
+                if(j == current){
+                    special++;
+                }
             }
             // THIS WORKS MOTHERFUCKER:DDD
+            // now do the scanning
             previous += arr.get(i) >= k ? arr.get(i) : k;
         }
         
-        return 0;
+        return special;
     }
 
 }
