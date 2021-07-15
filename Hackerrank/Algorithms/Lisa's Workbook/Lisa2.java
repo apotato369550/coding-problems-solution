@@ -19,46 +19,8 @@ class Result {
      */
 
     public static int workbook(int n, int k, List<Integer> arr) {
-        // Write your code here
-        // this is harder than i thought
-        // separate loop for page and chapters?
-        // a single chapter can span multiple pages
-        // total pages = sum or all elements in arr / k
-        // pages in a chapter = arr[i] / k rounded up
-        
-        // create the book, then scan through the book
-        // there are a lot of excess pages
-        
-        // you can't create the book fully
-        // you must construct the book chapter by chapter
-        
-        // SUBLISTS!!
-        // nope. sublists do not work...
-        // i should try an arithmetic solution
-        
-        // how to get current page: get question number + number of questions previously rounded up / k
-        
-        // WE MADE THE BOOK!!!!
-        int special = 0;
-        int previous = 0;
-        
-        for(int i = 0; i < arr.size(); i++){
-            for(int j = 1; j <= arr.get(i); j++){
-                int current = (int) Math.ceil((int) Math.ceil((float) j / k) + Math.ceil((float) previous / k));
-                if(j == current){
-                    special++;
-                }
-            }
-            // THIS WORKS MOTHERFUCKER:DDD
-            // now do the scanning
-            previous += arr.get(i) >= k ? arr.get(i) : k;
-        }
-        // try and understand the edge case
-        
-        // it's either
-        // the book generation is wrong
-        // or where we increment special is wrong
-        return special;
+    // Write your code here
+
     }
 
 }
