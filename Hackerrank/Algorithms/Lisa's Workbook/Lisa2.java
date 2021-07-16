@@ -26,14 +26,23 @@ class Result {
         for(int i = 0; i < arr.size(); i++){
             int problems = arr.get(i);
             for(int j = 1; j < problems; j++){
+                // if question == page, increment special problems by one
                 if(j == page){
                     result++;
                 }
+                // if the remainder of (the current question / max number of questions per page) equal to zero or the current question is equal to the number of problems
+                // increment page by 1
                 if(j % k == 0 || j == problems){
                     page++;
                 }
             }
         }
+        // try and comprehend
+        // see if it's a working solution.s
+        // this solution failed 9/11 test cases:((
+
+        // re-read discussion java solution and try again
+        // look  for a solution on github
 
         return result;
     }
