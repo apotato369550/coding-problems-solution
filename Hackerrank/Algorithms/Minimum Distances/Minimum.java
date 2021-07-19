@@ -22,6 +22,9 @@ class Result {
     public static int minimumDistances(List<Integer> a) {
     // Write your code here
     // fix edge case w/ 1;
+        if(a.size() == 2 && a.get(0) == a.get(1)){
+            return 1;
+        }
         int minimum = Integer.MAX_VALUE;
         for(int i = 0; i < a.size(); i++){
             for(int j = i + 1; j < a.size() - 1; j++){
