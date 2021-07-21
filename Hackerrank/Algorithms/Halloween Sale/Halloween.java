@@ -25,25 +25,21 @@ class Result {
 
     public static int howManyGames(int p, int d, int m, int s) {
         // fix this logic
+        // i can't think...
         int games = 0;
-        int sum = 0;
-        int currentPrice = p;
-        while(sum < s){
+        int budget = s;
+        int price = p;
+        while(budget > 0 && budget >= price){
+            budget -= price;
             games++;
-            sum += currentPrice;
-            if(sum > s){
-                games--;
-                sum -= currentPrice;
-                break;
-            }
-            if(currentPrice - d < m){
-                currentPrice = m;
+            if(price - d < m){
+                price = m;
             } else {
-                currentPrice -= m;
+                price -= d;
             }
-            
         }
         return games;
+        // make notes for this
     }
 
 }
