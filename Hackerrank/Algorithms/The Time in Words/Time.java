@@ -25,6 +25,47 @@ class Result {
     // Write your code here
         // this is interesting
         // ill take it
+        List<String> list = new ArrayList<>();
+        list.add("one");
+        list.add("two");
+        list.add("three");
+        list.add("four");
+        list.add("five");
+        list.add("six");
+        list.add("seven");
+        list.add("eight");
+        list.add("nine");
+        list.add("ten");
+        list.add("eleven");
+        list.add("twelve");
+        
+        if(m == 0){
+            return list.get(h - 1) + " o' clock";
+        } 
+        if(m == 15){
+            return "quarter past " + list.get(h - 1);
+        } 
+        if(m == 30){
+            return "half past" + list.get(h - 1);
+        }
+        if(m == 45){
+            if(h == 12){
+                return "quarter to 1"; 
+            } else {
+                return "quarter to " + (h + 1);
+            }
+        }
+        // forgot to convert numbers to text
+        // fix this portion
+        if(m > 30){
+            if(h == 12){
+                return (m - 30) > 1 ? (m - 30) + " minutes to 1" : "1 minute past 1";
+            } else {
+                return (m - 30) > 1 ? (m - 30) + " minutes to " + (h + 1) : "1 minute past " + (h + 1);
+            }
+        }
+        
+        return m > 1 ? m + " minutes past " + h : "1 minute past " + h;
     }
 
 }
