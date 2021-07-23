@@ -12,6 +12,8 @@ import static java.util.stream.Collectors.toList;
 
 class Result {
 
+    private static 
+    
     /*
      * Complete the 'timeInWords' function below.
      *
@@ -20,33 +22,55 @@ class Result {
      *  1. INTEGER h
      *  2. INTEGER m
      */
+    private static String convertToWords(int n, List<Integer> nums, List<Integer> tens){
+        if(n >= 19){
+            return nums.get(n - 1);
+        } else {
+            int tensDigit = Math.floor(n / 10);
+            int onesDigit = Math.floor(n % 10);
+            return tens.get(tensDigit - 1) + " " + nums.get(onesDigit - 1); 
+        }
+    }
 
     public static String timeInWords(int h, int m) {
-    // Write your code here
-        // this is interesting
-        // ill take it
-        List<String> list = new ArrayList<>();
-        list.add("one");
-        list.add("two");
-        list.add("three");
-        list.add("four");
-        list.add("five");
-        list.add("six");
-        list.add("seven");
-        list.add("eight");
-        list.add("nine");
-        list.add("ten");
-        list.add("eleven");
-        list.add("twelve");
+        List<String> nums = new ArrayList<>();
+        
+        nums.add("one");
+        nums.add("two");
+        nums.add("three");
+        nums.add("four");
+        nums.add("five");
+        nums.add("six");
+        nums.add("seven");
+        nums.add("eight");
+        nums.add("nine");
+        nums.add("ten");
+        nums.add("eleven");
+        nums.add("twelve");
+        nums.add("thirteen");
+        nums.add("fourteen");
+        nums.add("fifteen");
+        nums.add("sixteen");
+        nums.add("seventeen");
+        nums.add("eighteen");
+        nums.add("nineteen");
+        
+        List<String> tens = new ArrayList<>();
+        
+        tens.add("ten");
+        tens.add("twenty");
+        tens.add("thirty");
+        tens.add("forty");
+        tens.add("fifty");
         
         if(m == 0){
-            return list.get(h - 1) + " o' clock";
+            return nums.get(h - 1) + " o' clock";
         } 
         if(m == 15){
-            return "quarter past " + list.get(h - 1);
+            return "quarter past " + nums.get(h - 1);
         } 
         if(m == 30){
-            return "half past" + list.get(h - 1);
+            return "half past" + nums.get(h - 1);
         }
         if(m == 45){
             if(h == 12){
@@ -57,11 +81,12 @@ class Result {
         }
         // forgot to convert numbers to text
         // fix this portion
+        // fix this shiz
         if(m > 30){
             if(h == 12){
-                return (m - 30) > 1 ? (m - 30) + " minutes to 1" : "1 minute past 1";
+                return (m - 30) > 1 ? (30 - (m - 30)) + " minutes to 1" : "1 minute past 1";
             } else {
-                return (m - 30) > 1 ? (m - 30) + " minutes to " + (h + 1) : "1 minute past " + (h + 1);
+                return (m - 30) > 1 ? (30 - (m - 30)) + " minutes to " + (h + 1) : "1 minute past " + (h + 1);
             }
         }
         
