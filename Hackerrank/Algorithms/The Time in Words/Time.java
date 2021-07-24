@@ -12,7 +12,6 @@ import static java.util.stream.Collectors.toList;
 
 class Result {
 
-    private static 
     
     /*
      * Complete the 'timeInWords' function below.
@@ -22,15 +21,7 @@ class Result {
      *  1. INTEGER h
      *  2. INTEGER m
      */
-    private static String convertToWords(int n, List<Integer> nums, List<Integer> tens){
-        if(n >= 19){
-            return nums.get(n - 1);
-        } else {
-            int tensDigit = Math.floor(n / 10);
-            int onesDigit = Math.floor(n % 10);
-            return tens.get(tensDigit - 1) + " " + nums.get(onesDigit - 1); 
-        }
-    }
+     // repeated modifier?
 
     public static String timeInWords(int h, int m) {
         List<String> nums = new ArrayList<>();
@@ -63,6 +54,8 @@ class Result {
         tens.add("forty");
         tens.add("fifty");
         
+        // try fixing this
+        
         if(m == 0){
             return nums.get(h - 1) + " o' clock";
         } 
@@ -74,7 +67,7 @@ class Result {
         }
         if(m == 45){
             if(h == 12){
-                return "quarter to 1"; 
+                return "quarter to one"; 
             } else {
                 return "quarter to " + (h + 1);
             }
@@ -84,13 +77,13 @@ class Result {
         // fix this shiz
         if(m > 30){
             if(h == 12){
-                return (m - 30) > 1 ? (30 - (m - 30)) + " minutes to 1" : "1 minute past 1";
+                return (m - 30) > 1 ? (30 - (m - 30)) + " minutes to one" : "one minute past one";
             } else {
-                return (m - 30) > 1 ? (30 - (m - 30)) + " minutes to " + (h + 1) : "1 minute past " + (h + 1);
+                return (m - 30) > 1 ? (30 - (m - 30)) + " minutes to " + (h + 1) : "one minute past " + (h + 1);
             }
         }
         
-        return m > 1 ? m + " minutes past " + h : "1 minute past " + h;
+        return m > 1 ? m + " minutes past " + h : "one minute past " + h;
     }
 
 }
