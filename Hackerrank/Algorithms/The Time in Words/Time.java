@@ -48,7 +48,6 @@ class Result {
         
         List<String> tens = new ArrayList<>();
         
-        tens.add("ten");
         tens.add("twenty");
         tens.add("thirty");
         tens.add("forty");
@@ -72,18 +71,44 @@ class Result {
                 return "quarter to " + (h + 1);
             }
         }
-        // forgot to convert numbers to text
-        // fix this portion
-        // fix this shiz
+        
+        String converted = "";
+        int tensDigit = 0;
+        int onesDigit = 0;
+        System.out.println("Tens: " + tensDigit);
+        System.out.println("Ones: " + onesDigit);
+        // fix this
         if(m > 30){
-            if(h == 12){
-                return (m - 30) > 1 ? (30 - (m - 30)) + " minutes to one" : "one minute past one";
+            tensDigit = (int) Math.floor((double) (30 - (m - 30)) / 10);
+            onesDigit = (30 - (m - 30)) % 10;
+            
+            if(tensDigit > 1){
+                converted = tens.get(tensDigit - 2) + " " + nums.get(onesDigit - 1);
             } else {
-                return (m - 30) > 1 ? (30 - (m - 30)) + " minutes to " + (h + 1) : "one minute past " + (h + 1);
+                converted = nums.get((30 - (m - 30)) - 1);
+            }
+            
+            System.out.println(converted);
+            
+            if(h == 12){
+                return (m - 30) > 1 ? converted + " minutes to one" : "one minute past one";
+            } else {
+                return (m - 30) > 1 ? converted + " minutes to " + nums.get(h) : "one minute past " + nums.get(h - 1);
             }
         }
         
-        return m > 1 ? m + " minutes past " + h : "one minute past " + h;
+        tensDigit = (int) Math.floor((double) m / 10);
+        onesDigit = m % 10;
+        
+        if(tensDigit > 0){
+            converted = tens.get(tensDigit - 2) + " " + nums.get(onesDigit - 1);
+        } else {
+            converted = nums.get(m - 1);
+        }
+            
+        System.out.println(converted);
+        
+        return m > 1 ? converted + " minutes past " + nums.get(h) : "one minute past " + nums.get(h);
     }
 
 }
