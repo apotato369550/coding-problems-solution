@@ -22,6 +22,7 @@ class Result {
      *  2. INTEGER m
      */
      // repeated modifier?
+     // finsihed making working solution
 
     public static String timeInWords(int h, int m) {
         List<String> nums = new ArrayList<>();
