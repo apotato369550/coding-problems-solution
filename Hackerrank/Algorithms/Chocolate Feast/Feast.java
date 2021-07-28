@@ -26,6 +26,17 @@ class Result {
     // Write your code here
         // this looks simple enough
         //i could try solving this recursively if i can remember my lessons probably
+        // let's try solving it iteratively first
+        int currentChocolates = 0;
+        int wrappers = 0;
+        int money = n;
+        while(money >= c || wrappers >= m){
+            if(money >= c){
+                money %= c;
+                chocolates += Math.floor(1)
+                // work on this
+            }
+        }
     }
 
 }
