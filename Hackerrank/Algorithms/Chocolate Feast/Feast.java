@@ -27,16 +27,31 @@ class Result {
         // this looks simple enough
         //i could try solving this recursively if i can remember my lessons probably
         // let's try solving it iteratively first
-        int currentChocolates = 0;
+        int chocolates = 0;
         int wrappers = 0;
         int money = n;
+        
+        chocolates += (int) Math.floor((double) money / c);
+        wrappers += (int) Math.floor((double) money / c);
+        money %= c;
+        
+        while(wrappers >= m){
+            int turned = (int) Math.floor((double) wrappers / m);
+            chocolates += turned;
+            wrappers %= m;
+            wrappers += turned;
+        }
+        /*
         while(money >= c || wrappers >= m){
             if(money >= c){
-                money %= c;
-                chocolates += Math.floor(1)
+                chocolates += Math.floor(wrappers / m);
+                wrappers += Math.floor(money / c);
                 // work on this
             }
         }
+        */
+        // optimize this
+        return chocolates;
     }
 
 }
