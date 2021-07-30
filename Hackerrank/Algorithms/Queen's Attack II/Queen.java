@@ -25,6 +25,18 @@ class Result {
      */
 
     public static int queensAttack(int n, int k, int r_q, int c_q, List<List<Integer>> obstacles) {
+        List<List<Integer>> velocities = new ArrayList<List<Integer>>();
+        velocities.add(Arrays.asList([0, 1]));
+        velocities.add(Arrays.asList([1, 0]));
+        velocities.add(Arrays.asList([0, -1]));
+        velocities.add(Arrays.asList([-1, 0]));
+        velocities.add(Arrays.asList([1, 1]));
+        velocities.add(Arrays.asList([-1, -1]));
+        velocities.add(Arrays.asList([1, -1]));
+        velocities.add(Arrays.asList([-1, 1]));
+        
+        // loop through velocities and current coordinates.
+        
     // Write your code here
         // try this
     }
