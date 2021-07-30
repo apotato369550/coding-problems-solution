@@ -27,6 +27,8 @@ class Result {
         // this looks simple enough
         //i could try solving this recursively if i can remember my lessons probably
         // let's try solving it iteratively first
+
+        // make notes for this
         int chocolates = 0;
         int wrappers = 0;
         
