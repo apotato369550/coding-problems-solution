@@ -26,19 +26,50 @@ class Result {
 
     public static int queensAttack(int n, int k, int r_q, int c_q, List<List<Integer>> obstacles) {
         List<List<Integer>> velocities = new ArrayList<List<Integer>>();
-        velocities.add(Arrays.asList([0, 1]));
-        velocities.add(Arrays.asList([1, 0]));
-        velocities.add(Arrays.asList([0, -1]));
-        velocities.add(Arrays.asList([-1, 0]));
-        velocities.add(Arrays.asList([1, 1]));
-        velocities.add(Arrays.asList([-1, -1]));
-        velocities.add(Arrays.asList([1, -1]));
-        velocities.add(Arrays.asList([-1, 1]));
+        velocities.add(Arrays.asList(0, 1));
+        velocities.add(Arrays.asList(1, 0));
+        velocities.add(Arrays.asList(0, -1));
+        velocities.add(Arrays.asList(-1, 0));
+        velocities.add(Arrays.asList(1, 1));
+        velocities.add(Arrays.asList(-1, -1));
+        velocities.add(Arrays.asList(1, -1));
+        velocities.add(Arrays.asList(-1, 1));
         
-        // loop through velocities and current coordinates.
+        int squares = 0;
         
-    // Write your code here
-        // try this
+        // this sure as hell don't work
+        
+        for(int i = 0; i < velocities.size(); i++){
+            int x = c_q;
+            int y = r_q;
+            List<Integer> velocity = velocities.get(i);
+            int xVelocity = velocity.get(0);
+            int yVelocity = velocity.get(1);
+            boolean obstacleFound = false;
+            
+            while((x + xVelocity > n || x + xVelocity < 1) && (y + yVelocity > n || y + yVelocity < 1) && !obstacleFound){
+                obstacleFound = false;
+                
+                x += xVelocity;
+                y += yVelocity;
+                
+                for(List<Integer> list : obstacles){
+                    int obstacleX = list.get(0);
+                    int obstacleY = list.get(1);
+                    
+                    if(x == obstacleX && y == obstacleY){
+                        obstacleFound = true;
+                        break;
+                    }
+                }
+                
+                if(!obstacleFound){
+                    squares++;
+                }
+            }
+        }
+        
+        return 0;
     }
 
 }
