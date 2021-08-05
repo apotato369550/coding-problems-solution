@@ -51,8 +51,32 @@ class Result {
             int xVelocity = velocity.get(0);
             int yVelocity = velocity.get(1);
             boolean obstacleFound = false;
-            
-            // restart
+            System.out.println("Velocity: (" + xVelocity + ", " + yVelocity + ")");
+            System.out.println("Length: " + n);
+            // logic x and y are wrong
+            System.out.println("Starting X and Y: (" + x + ", " + y + ")");
+            while((x >= 1 && x <= n) && (y >= 1 && y <= n) && !obstacleFound){
+                x += xVelocity;
+                y += yVelocity;
+                
+                if((x < 1 || x > n) || (y < 1 || y > n)){
+                    break;
+                }
+                
+                for(List<Integer> obstacle : obstacles){
+                    if(x == obstacle.get(0) && y == obstacle.get(1)){
+                        obstacleFound = true;
+                        break;
+                    }
+                }
+                if(obstacleFound){
+                    break;
+                } else {
+                    System.out.println("(" + x + ", " + y + ")");
+                    squares++;
+                }
+                // sample case 2 shows 12
+            }
         }
         return squares;
     }
