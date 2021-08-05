@@ -26,6 +26,7 @@ class Result {
      
     public boolean isObstacle(int x, int y){
         // work on this
+        return true;
     }
 
     public static int queensAttack(int n, int k, int r_q, int c_q, List<List<Integer>> obstacles) {
@@ -51,36 +52,7 @@ class Result {
             int yVelocity = velocity.get(1);
             boolean obstacleFound = false;
             
-            System.out.println("Velocities: x velocity: " + xVelocity + " y velocity: " + yVelocity);
-            System.out.println("Starting square: x: " + c_q + " y: " + r_q);
-            System.out.println("Board Length: " + n);
-            
-            
-            while((x + xVelocity <= n && x + xVelocity >= 1) && 
-            (y + yVelocity <= n && y + yVelocity >= 1) && !obstacleFound){
-                obstacleFound = false;
-                
-                x += xVelocity;
-                y += yVelocity;
-                
-                System.out.println("Current Location: x: " + x + " y: " + y);
-                
-                for(List<Integer> list : obstacles){
-                    int obstacleX = list.get(0);
-                    int obstacleY = list.get(1);
-                    
-                    if(x == obstacleX && y == obstacleY){
-                        System.out.println("Found Obstacle: Obstacle: " + obstacleX + ", " + obstacleY + " == " + " Location: " + x + ", " + y);
-                        obstacleFound = true;
-                        break;
-                    }
-                }
-                
-                if(!obstacleFound){
-                    squares++;
-                }
-                
-            }
+            // restart
         }
         return squares;
     }
