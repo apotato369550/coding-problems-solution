@@ -45,16 +45,20 @@ class Result {
         // this sure as hell don't work
         
         for(int i = 0; i < velocities.size(); i++){
-            int x = c_q;
-            int y = r_q;
+            // inverted??
+            // bruh inverted
+            
+            // time limit exceeded
+            int x = r_q;
+            int y = c_q;
             List<Integer> velocity = velocities.get(i);
             int xVelocity = velocity.get(0);
             int yVelocity = velocity.get(1);
             boolean obstacleFound = false;
-            System.out.println("Velocity: (" + xVelocity + ", " + yVelocity + ")");
-            System.out.println("Length: " + n);
+            // System.out.println("Velocity: (" + xVelocity + ", " + yVelocity + ")");
+            // System.out.println("Length: " + n);
             // logic x and y are wrong
-            System.out.println("Starting X and Y: (" + x + ", " + y + ")");
+            // System.out.println("Starting X and Y: (" + x + ", " + y + ")");
             while((x >= 1 && x <= n) && (y >= 1 && y <= n) && !obstacleFound){
                 x += xVelocity;
                 y += yVelocity;
@@ -72,7 +76,7 @@ class Result {
                 if(obstacleFound){
                     break;
                 } else {
-                    System.out.println("(" + x + ", " + y + ")");
+                    // System.out.println("(" + x + ", " + y + ")");
                     squares++;
                 }
                 // sample case 2 shows 12
