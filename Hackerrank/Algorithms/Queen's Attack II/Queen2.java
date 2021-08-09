@@ -25,8 +25,33 @@ class Result {
      */
 
     public static int queensAttack(int n, int k, int r_q, int c_q, List<List<Integer>> obstacles) {
-    // Write your code here
-
+    // Write your code hereList
+        int squares = 0;
+        
+        // something wrong with the formula, i can feel it
+        // yep something's wrong
+        // I need a new notebook to do these type of calculations
+        
+        // copy formulas from geeksforgeeks
+        int north = n - c_q;
+        int south = n - (c_q - north);
+        int east = n - r_q;
+        int west = n - (r_q - east);
+        int northEast = (int) Math.floor((int) north + (int) east / (int) 2);
+        int southEast = (int) Math.floor((int) south + (int) east / (int) 2);
+        int northWest = (int) Math.floor((int) north + (int) west / (int) 2);
+        int southWest = (int) Math.floor((int) south + (int) west / (int) 2);
+        
+        squares += north;
+        squares += south;
+        squares += east;
+        squares += west;
+        squares += northEast;
+        squares += southEast;
+        squares += northWest;
+        squares += southWest;
+        
+        return squares;
     }
 
 }
