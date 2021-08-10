@@ -28,27 +28,40 @@ class Result {
     // Write your code hereList
         int squares = 0;
         
+        int x = r_q;
+        int y = c_q;
+        
         // something wrong with the formula, i can feel it
         // yep something's wrong
         // I need a new notebook to do these type of calculations
-        
         // copy formulas from geeksforgeeks
-        int north = n - c_q;
-        int south = n - (c_q - north);
-        int east = n - r_q;
-        int west = n - (r_q - east);
-        int northEast = (int) Math.floor((int) north + (int) east / (int) 2);
-        int southEast = (int) Math.floor((int) south + (int) east / (int) 2);
-        int northWest = (int) Math.floor((int) north + (int) west / (int) 2);
-        int southWest = (int) Math.floor((int) south + (int) west / (int) 2);
+        int north = n - y;
+        int south = y - 1;
+        int east = n - x;
+        int west = x - 1;
+        
+        int northEast = Math.min(n - x, n - y);
+        int northWest = Math.min(x - 1, n - y);
+        int southEast = Math.min(x - 1, y - 1);
+        int southWest = Math.min(n - x, y - 1 );
+        
+        for(List<Integer> obstacle : obstacles){
+            if(x == obstacle.get(0) && obstacle.get(1) < y){
+                south = Math.min(south, y - obstacle.get(y) - 1)             
+            }
+            if(x == obstacle.get(0) && obstacle.get(1) > y){
+                north = Math.min(north, obstacle.get(1) - y - 1)
+            }
+        }
         
         squares += north;
         squares += south;
         squares += east;
         squares += west;
+        
         squares += northEast;
-        squares += southEast;
         squares += northWest;
+        squares += southEast;
         squares += southWest;
         
         return squares;

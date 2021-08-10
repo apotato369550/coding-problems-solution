@@ -23,22 +23,63 @@ class Result {
      *  4. INTEGER c_q
      *  5. 2D_INTEGER_ARRAY obstacles
      */
+     
+    public boolean isObstacle(int x, int y){
+        // work on this
+        return true;
+    }
 
     public static int queensAttack(int n, int k, int r_q, int c_q, List<List<Integer>> obstacles) {
-    // Write your code hereList
+        List<List<Integer>> velocities = new ArrayList<List<Integer>>();
+        velocities.add(Arrays.asList(0, 1));
+        velocities.add(Arrays.asList(1, 0));
+        velocities.add(Arrays.asList(0, -1));
+        velocities.add(Arrays.asList(-1, 0));
+        velocities.add(Arrays.asList(1, 1));
+        velocities.add(Arrays.asList(-1, -1));
+        velocities.add(Arrays.asList(1, -1));
+        velocities.add(Arrays.asList(-1, 1));
+        
         int squares = 0;
         
-        int north = n - c_q;
-        int south = n - (c_q - north);
-        int east = n - r_q;
-        int west = n - (r_q - east);
-        int northEast = Math.floor((int) north + east / (int) 2);
+        // this sure as hell don't work
         
-        squares += north;
-        squares += south;
-        squares += east;
-        squares += west;
-        
+        for(int i = 0; i < velocities.size(); i++){
+            // inverted??
+            // bruh inverted
+            int x = r_q;
+            int y = c_q;
+            List<Integer> velocity = velocities.get(i);
+            int xVelocity = velocity.get(0);
+            int yVelocity = velocity.get(1);
+            boolean obstacleFound = false;
+            // System.out.println("Velocity: (" + xVelocity + ", " + yVelocity + ")");
+            // System.out.println("Length: " + n);
+            // logic x and y are wrong
+            // System.out.println("Starting X and Y: (" + x + ", " + y + ")");
+            while((x >= 1 && x <= n) && (y >= 1 && y <= n) && !obstacleFound){
+                x += xVelocity;
+                y += yVelocity;
+                
+                if((x < 1 || x > n) || (y < 1 || y > n)){
+                    break;
+                }
+                
+                for(List<Integer> obstacle : obstacles){
+                    if(x == obstacle.get(0) && y == obstacle.get(1)){
+                        obstacleFound = true;
+                        break;
+                    }
+                }
+                if(obstacleFound){
+                    break;
+                } else {
+                    // System.out.println("(" + x + ", " + y + ")");
+                    squares++;
+                }
+                // sample case 2 shows 12
+            }
+        }
         return squares;
     }
 
