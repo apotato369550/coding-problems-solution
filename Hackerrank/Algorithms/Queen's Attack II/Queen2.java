@@ -52,6 +52,25 @@ class Result {
             if(x == obstacle.get(0) && obstacle.get(1) > y){
                 north = Math.min(north, obstacle.get(1) - y - 1)
             }
+            if(y == obstacle.get(1) && obstacle.get(0) > x){
+                east = Math.min(east, obstacle.get(1) - x - 1);
+            }
+            if(y == obstacle.get(1) && obstacle.get(0) < x){
+                west = Math.min(west, x - obstacle.get(0) - 1)             
+            }
+            // finish theseVVV for some reason i'm a bit dyslexic today
+            if(){
+                northWest;
+            } 
+            if(){
+                northEast;
+            }
+            if(){
+                southWest;
+            }
+            if(){
+                southEast;
+            }
         }
         
         squares += north;
