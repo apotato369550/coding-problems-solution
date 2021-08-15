@@ -46,13 +46,19 @@ class Result {
         int southWest = Math.min(south, west);
         
         for(List<Integer> obstacle : obstacles){
-            if(x == obstacles.get(0) && obstacle.y > y){
-                north = Math.min(north, y - obstacle.y - 1);               
+            if(x == obstacle.get(0) && obstacle.get(1) > y){
+                north = Math.min(north, obstacle.get(1) - y - 1);               
             }
-            if(x == obstacles.get(0) && obstacle.y < y){
-                // the logic is a bit mixed up right now since the video and the layout are different, but i can analyze this on my own
-                south = Math.min(south, y );
+            if(x == obstacle.get(0) && obstacle.get(1) < y){
+                south = Math.min(south, y - obstacle.get(1) - 1);
             }
+            if(y == obstacle.get(1) && obstacle.get(0) > x){
+                east = Math.min(east, obstacle.get(0) - x - 1);
+            }
+            if(y == obstacle.get(1) && obstacle.get(0) < x){
+                west = Math.min(west, x - obstacle.get(0) )
+            }
+            // do diagonals
         }
         
         squares += north;
