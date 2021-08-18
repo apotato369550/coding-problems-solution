@@ -56,9 +56,23 @@ class Result {
                 east = Math.min(east, obstacle.get(0) - x - 1);
             }
             if(y == obstacle.get(1) && obstacle.get(0) < x){
-                west = Math.min(west, x - obstacle.get(0) )
+                west = Math.min(west, x - obstacle.get(0) - 1);
             }
             // do diagonals
+            if(obstacle.get(1) > y && obstacle.get(0) > x && obstacle.get(1) - y == obstacle.get(0) - x){
+                northEast = Math.min(northEast, obstacle.get(0) - x - 1);
+            }
+            if(obstacle.get(1) > y && x > obstacle.get(0) &&
+            obstacle.get(1) - y == x - obstacle.get(0)){
+                northWest = Math.min(northWest, x - obstacle.get(0) - 1);
+            }
+            if(obstacle.get(1) < y && obstacle.get(0) > x && y - obstacle.get(1) == obstacle.get(0) - x){
+                southEast = Math.min(southEast, obstacle.get(0) - x - 1);
+            }
+            if(obstacle.get(1) < y && x > obstacle.get(0) && y - obstacle.get(1) == x - obstacle.get(0)){
+                southWest = Math.min(southWest, x - obstacle.get(0) - 1);   
+            }
+            // continue here
         }
         
         squares += north;
